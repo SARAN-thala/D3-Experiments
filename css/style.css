@@ -1,0 +1,31 @@
+.container {
+    border: 1px solid black;
+}
+
+.container svg {
+    border: 1px solid grey;
+}
+
+.container circle {
+    stroke: blue;
+}
+
+.domain {
+    stroke: grey;
+    stroke-width: 1px;
+}
+
+.data {
+    fill: none;
+    stroke: steelblue;
+    stroke-width: 2px;
+    /*shape-rendering: crispEdges;*/
+}
+
+.grid {
+    stroke: lightgrey;
+}
+.line {
+    fill: none;
+    stroke: steelblue;
+}
