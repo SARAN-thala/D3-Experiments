@@ -18,9 +18,9 @@ path {
 #bar-chart {
     float: left;
 }
-.rect {
-    opacity: 0.6;
-}
+/*.rect {*/
+    /*opacity: 0.4;*/
+/*}*/
 
 .grid {
     stroke: lightgrey;

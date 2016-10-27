@@ -1,7 +1,7 @@
 const datas = [];
 const UPPER_LIMIT = 100;
 const LOWER_LIMIT = 0;
-const RANGE=30;
+const RANGE=40;
 
 const translate = (x, y) => (`translate (${x}, ${y})`);
 
@@ -20,7 +20,7 @@ newData();
 
 const getLastData = function () {
     datas.push(Math.floor(Math.random(0, 100)*100));
-    datas.shift(1);
+    datas.shift();
     return datas;
 };
 
@@ -42,10 +42,11 @@ const drawBarChart = function (svg, datas, yScale, xScale) {
         .enter()
         .append('rect')
         .attr('height',(d) => (INNER_HEIGHT - yScale(d)))
-        .attr('width', 40)
+        .attr('width', 29)
         .attr('x',(d, i) => (xScale(i)))
         .attr('y', (d) => (yScale(d)))
         .attr('transform', translate(MARGIN, MARGIN))
+        .attr('fill','lightsteelblue')
         .classed('rect', true);
 };
 
@@ -93,13 +94,13 @@ const loadChart = function () {
 
     let xScale = d3.scaleLinear()
         .domain([0, RANGE])
-        .range([0, INNER_WIDTH]);
+        .range([0, 1200]);
 
     let yScale = d3.scaleLinear()
         .domain([0, 100])
         .range([INNER_HEIGHT,0]);
 
-    let xAxis = d3.axisBottom(xScale).ticks(30);
+    let xAxis = d3.axisBottom(xScale).ticks(40);
     let yAxis = d3.axisLeft(yScale);
 
     let svg = initializeChart(xAxis,yAxis,'#line-chart');
@@ -109,14 +110,16 @@ const loadChart = function () {
         .x((d,i) => (xScale(i)))
         .y(d => (yScale(d)));
 
-    // setInterval(function () {
+    // d3.select('.path').remove();
+    // d3.select('.rect').remove();
+    setInterval(function () {
         let randomNumbers = getLastData();
         svg.selectAll('.path').remove();
         svgBar.selectAll('.rect').remove();
 
         drawLineChart(svg,line,randomNumbers);
         drawBarChart(svgBar,randomNumbers,yScale,xScale);
-    // },250);
+    },500);
 };
 
 window.onload = loadChart;
