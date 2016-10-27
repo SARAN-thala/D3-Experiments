@@ -1,6 +1,6 @@
 .container {
     width: 1400px;
-    height: 720px;
+    height: 728px;
     border: 1px solid black;
 }
 
@@ -19,7 +19,7 @@ path {
     float: left;
 }
 .rect {
-    color: red;
+    opacity: 0.6;
 }
 
 .grid {

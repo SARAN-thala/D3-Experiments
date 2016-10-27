@@ -1,7 +1,7 @@
 const datas = [];
 const UPPER_LIMIT = 100;
 const LOWER_LIMIT = 0;
-const RANGE=10;
+const RANGE=30;
 
 const translate = (x, y) => (`translate (${x}, ${y})`);
 
@@ -13,13 +13,13 @@ const INNER_HEIGHT = HEIGHT - (2 * MARGIN);
 
 const newData = function () {
     for(let i=0;i<=RANGE;i++){
-        datas.push(_.random(LOWER_LIMIT,UPPER_LIMIT));
+        datas.push(Math.floor(Math.random(LOWER_LIMIT,UPPER_LIMIT)*100));
     }
 };
 newData();
 
 const getLastData = function () {
-    datas.push(_.random(0, 100));
+    datas.push(Math.floor(Math.random(0, 100)*100));
     datas.shift(1);
     return datas;
 };
@@ -30,26 +30,29 @@ const drawLineChart = function (svg, line, datas) {
 
     g.append('path')
         .attr('d', line(datas))
+        // .transition()
+        // .ease(d3.easeLinear)
+        // .duration(250)
         .classed('path', true);
 };
 
-var drawBarChart = function (svg, datas, yScale, xScale) {
+const drawBarChart = function (svg, datas, yScale, xScale) {
     svg.selectAll('rect')
         .data(datas)
         .enter()
         .append('rect')
-        .attr('height', function (d) {
-            return INNER_HEIGHT - yScale(d);
-        })
-        .attr('width', 6)
-        .attr('x', function (d, i) {
-            return xScale(i);
-        })
-        .attr('y', function (d) {
-            return yScale(d);
-        })
+        .attr('height',(d) => (INNER_HEIGHT - yScale(d)))
+        .attr('width', 40)
+        .attr('x',(d, i) => (xScale(i)))
+        .attr('y', (d) => (yScale(d)))
         .attr('transform', translate(MARGIN, MARGIN))
         .classed('rect', true);
+};
+
+var histogramChart = function () {
+    var histogram = d3.histogram()
+        .domain(x.domain())
+        .thresholds(x.ticks(20));
 };
 
 const initializeChart = function (xAxis, yAxis, div) {
@@ -62,26 +65,26 @@ const initializeChart = function (xAxis, yAxis, div) {
         .call(xAxis)
         .classed('xAxis', true);
 
-    svg.selectAll('.xAxis .tick')
-        .append('line')
-        .attr('x1', 0.5)
-        .attr('y1', 0)
-        .attr('x2', 0.5)
-        .attr('y2', -INNER_HEIGHT)
-        .classed('grid', true);
+    // svg.selectAll('.xAxis .tick')
+    //     .append('line')
+    //     .attr('x1', 0.5)
+    //     .attr('y1', 0)
+    //     .attr('x2', 0.5)
+    //     .attr('y2', -INNER_HEIGHT)
+    //     .classed('grid', true);
 
     svg.append('g')
         .attr('transform', translate(MARGIN, MARGIN))
         .call(yAxis)
         .classed('yAxis', true);
 
-    svg.selectAll('.yAxis .tick')
-        .append('line')
-        .attr('x1', 0)
-        .attr('y1', 0.5)
-        .attr('x2', INNER_WIDTH)
-        .attr('y2', 0.5)
-        .classed('grid', true);
+    // svg.selectAll('.yAxis .tick')
+    //     .append('line')
+    //     .attr('x1', 0)
+    //     .attr('y1', 0.5)
+    //     .attr('x2', INNER_WIDTH)
+    //     .attr('y2', 0.5)
+    //     .classed('grid', true);
 
     return svg;
 };
@@ -96,7 +99,7 @@ const loadChart = function () {
         .domain([0, 100])
         .range([INNER_HEIGHT,0]);
 
-    let xAxis = d3.axisBottom(xScale);
+    let xAxis = d3.axisBottom(xScale).ticks(30);
     let yAxis = d3.axisLeft(yScale);
 
     let svg = initializeChart(xAxis,yAxis,'#line-chart');
