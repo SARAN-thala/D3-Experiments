@@ -1,0 +1,8 @@
+.bar-chart {
+    /*background: steelblue;*/
+    border: 1px solid white;
+    text-align: right;
+    color: white;
+    font: 14px sans-serif;
+    padding-right: 2px;
+}
