@@ -1,0 +1,26 @@
+.student-chart {
+    border: 1px solid white;
+    text-align: center;
+    color: white;
+    font: 18px sans-serif;
+    border-radius: 25px;
+    text-transform: capitalize;
+}
+
+button {
+    border-radius: 15px;
+}
+
+.legend {
+    margin-top: 30px;
+}
+
+.legends {
+    border-radius: 25px;
+    display: inline-block;
+    text-align: center;
+    color: white;
+    font: 16px sans-serif;
+    padding: 3px;
+    text-transform: capitalize;
+}
