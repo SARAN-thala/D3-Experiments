@@ -1,4 +1,4 @@
-var data = [1, 2, 3, 4, 5, 6, 7, 8, 9, 20];
+var data = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
 
 function appendRow(scale, value) {
     var row = d3.select('tbody').append('tr');
@@ -10,8 +10,9 @@ function appendRow(scale, value) {
         .enter()
         .append('td')
         .text(function (d) {
-            return scale(d);
+            return scale(d).toFixed(2);
         });
+        // .classed('table-box',true);
 }
 
 var createTable = function () {
@@ -22,9 +23,9 @@ var createTable = function () {
 
     appendRow(d3.scaleLinear(), 'Title');
     appendRow(d3.scaleLinear(), 'N');
-    appendRow(d3.scalePow().exponent(2), 'Square');
-    appendRow(d3.scaleLog(), 'Log');
-    appendRow(d3.scaleLog().domain([1, 10]).base(10).rangeRound([0, 1]), 'Range Round');
+    appendRow(d3.scalePow().exponent(2), 'Square of N');
+    appendRow(d3.scaleLog(), 'Log(N)');
+    appendRow(d3.scaleLog().rangeRound([0, 1]), 'Log(N) Round');
 };
 
 var loadTable = function () {
