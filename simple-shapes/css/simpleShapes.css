@@ -1,4 +1,4 @@
-line {
+.slope {
     stroke-width: 2px;
     stroke: grey;
 }
@@ -9,13 +9,13 @@ circle {
     fill: none;
 }
 
-rect {
+.square {
     stroke: steelblue;
     stroke-width: 2px;
     fill: none;
 }
 
-polygon {
+.triangle {
     stroke: green;
     stroke-width: 2px;
     fill: none;
