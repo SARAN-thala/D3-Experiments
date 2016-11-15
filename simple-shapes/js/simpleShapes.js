@@ -26,8 +26,8 @@ const createShapes = function () {
         .classed('square',true);
 
     svg.append('polygon')
-        .attr('points', "460,100,460,100,510,1,560,101")
         .classed('triangle',true);
+        .attr('points', "460,100,460,100,510,1,560,101")
 };
 
 window.onload = createShapes;
