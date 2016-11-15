@@ -13,7 +13,7 @@ const studentData = [
     {name: 'pokemon', subject: 'social studies', score: 32}
 ];
 
-const subjects = ['maths', 'english', 'kannada', 'science', 'social studies', 'bengali', 'tamil', 'sports']
+const subjects = ['maths', 'english', 'kannada', 'science', 'social studies', 'bengali', 'tamil', 'sports'];
 const colors = d3.scaleOrdinal(d3.schemeCategory10)
     .domain(subjects);
 
