@@ -1,0 +1,26 @@
+/*.container {*/
+    /*width: 620px;*/
+    /*height: 620px;*/
+    /*border: 1px solid black;*/
+/*}*/
+
+/*.container svg {*/
+    /*border: 1px solid grey;*/
+/*}*/
+
+path {
+    stroke-width: 2px;
+    fill: none;
+}
+
+.line-path {
+    stroke: steelblue;
+}
+
+#line-chart {
+    float: left;
+}
+
+.grid {
+    stroke: lightgrey;
+}
