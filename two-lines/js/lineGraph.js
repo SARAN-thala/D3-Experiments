@@ -5,7 +5,7 @@ let translate = (x, y) => (`translate (${x}, ${y})`);
 
 const WIDTH = 620;
 const HEIGHT = 620;
-const MARGIN = 30;
+const MARGIN = 90;
 const INNER_WIDTH = WIDTH - (2 * MARGIN);
 const INNER_HEIGHT = HEIGHT - (2 * MARGIN);
 
@@ -32,7 +32,7 @@ let generateCircles = function (xVal, yVal, data, conatiner) {
         .attr('cy', yVal)
 };
 
-const loadChart = function () {
+const loadChart = function (x) {
     let svg = d3.select('.container').append('svg')
         .attr('width', WIDTH)
         .attr('height', HEIGHT);
@@ -54,24 +54,12 @@ const loadChart = function () {
     let line = d3.line()
         .x(X_SCALE)
         .y(Y_SCALE)
-        // .curve(d3.curveLinearClosed)
-        // .curve(d3.curveStepAfter)
-        // .curve(d3.curveBasis)
-        // .curve(d3.curveBundle)
-        // .curve(d3.curveCardinalClosed)
-        // .curve(d3.curveCardinal)
-        .curve(d3.curveCatmullRom)
+        .curve(x.d3Curve);
 
     let sine = d3.line()
         .x(SIN_X_SCALE)
         .y(SIN_Y_SCALE)
-        // .curve(d3.curveLinearClosed)
-        // .curve(d3.curveStepAfter)
-        // .curve(d3.curveBasis)
-        // .curve(d3.curveBundle)
-        // .curve(d3.curveCardinalClosed)
-        // .curve(d3.curveCardinal)
-        .curve(d3.curveCatmullRom)
+        .curve(x.d3Curve);
 
     g.append('path')
         .attr('d', line(DATA))
@@ -88,4 +76,17 @@ const loadChart = function () {
 
 };
 
-window.onload = loadChart;
+let curveArray = [
+    {'d3Curve': d3.curveLinear},
+    {'d3Curve': d3.curveLinearClosed},
+    {'d3Curve': d3.curveStepAfter},
+    {'d3Curve': d3.curveBasis},
+    {'d3Curve': d3.curveBundle},
+    {'d3Curve': d3.curveCardinalClosed},
+    {'d3Curve': d3.curveCardinal},
+    {'d3Curve': d3.curveCatmullRom}
+];
+
+const curveInterpolate = () => (curveArray.forEach(x=>loadChart(x)));
+
+window.onload = curveInterpolate;
