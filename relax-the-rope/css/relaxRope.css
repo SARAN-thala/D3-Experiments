@@ -1,0 +1,12 @@
+path {
+    stroke-width: 2px;
+    fill: none;
+}
+
+.line-sine-path {
+    stroke: steelblue;
+}
+circle{
+    fill: white;
+    stroke: steelblue;
+}
