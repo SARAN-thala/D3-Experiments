@@ -1,4 +1,5 @@
 const DATA = [{x: 0, y: 5}, {x: 1, y: 9}, {x: 2, y: 7}, {x: 3, y: 5}, {x: 4, y: 3}, {x: 6, y: 4}, {x: 7, y: 2}, {x: 8, y: 3}, {x: 9, y: 2}];
+const SIN_DATA = [0,1,2,3,4,5,6,7,8,9];
 
 let translate = (x, y) => (`translate (${x}, ${y})`);
 
@@ -18,7 +19,9 @@ let yScale = d3.scaleLinear()
 
 const X_SCALE = d => ( xScale(d.x / 10));
 const Y_SCALE = d => ( yScale(d.y / 10));
-const SIN_Y_SCALE = d => (yScale(Math.sin(d.x) / 10 + 0.5));
+
+const SIN_X_SCALE = d => ( xScale(d/10));
+const SIN_Y_SCALE = d => (yScale(Math.sin(d)/10+ 0.5));
 
 let generateCircles = function (xVal, yVal, data, conatiner) {
     conatiner.append('g').selectAll('circle')
@@ -51,23 +54,27 @@ const loadChart = function () {
     let line = d3.line()
         .x(X_SCALE)
         .y(Y_SCALE)
-        .curve(d3.curveStepAfter);
+        // .curve(d3.curveStepAfter)
+        .curve(d3.curveBasis)
+        // .curve(d3.curveLinearClosed)
 
     let sine = d3.line()
-        .x(X_SCALE)
+        .x(SIN_X_SCALE)
         .y(SIN_Y_SCALE)
-        .curve(d3.curveStepAfter);
+        // .curve(d3.curveStepAfter)
+        .curve(d3.curveBasis)
+        // .curve(d3.curveLinearClosed)
 
     g.append('path')
         .attr('d', line(DATA))
         .classed('line-path', true);
 
     g.append('path')
-        .attr('d', sine(DATA))
+        .attr('d', sine(SIN_DATA))
         .classed('line-sine-path', true);
 
     generateCircles(X_SCALE, Y_SCALE, DATA, g);
-    generateCircles(X_SCALE, SIN_Y_SCALE, DATA, g);
+    generateCircles(SIN_X_SCALE, SIN_Y_SCALE, SIN_DATA, g);
 
     g.selectAll('circle').exit().remove();
 
