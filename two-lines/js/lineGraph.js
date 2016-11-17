@@ -8,33 +8,6 @@ const MARGIN = 30;
 const INNER_WIDTH = WIDTH - (2 * MARGIN);
 const INNER_HEIGHT = HEIGHT - (2 * MARGIN);
 
-// const drawLineChart = function (svg, line, datas) {
-//     let g = svg.append('g')
-//         .attr('transform', translate(MARGIN,MARGIN));
-//
-//     g.append('path')
-//         .attr('d', line(datas))
-//         .classed('path', true);
-// };
-//
-// const initiazlizeChart = function (xAxis, yAxis, div) {
-//     let svg = d3.select(div).append('svg')
-//         .attr('width', WIDTH)
-//         .attr('height', HEIGHT);
-//
-//     svg.append('g')
-//         .attr('transform', translate(MARGIN, HEIGHT - MARGIN))
-//         .call(xAxis)
-//         .classed('xAxis', true);
-//
-//     svg.append('g')
-//         .attr('transform', translate(MARGIN, MARGIN))
-//         .call(yAxis)
-//         .classed('yAxis', true);
-//
-//     return svg;
-// };
-
 const loadChart = function () {
     let svg = d3.select('.container').append('svg')
         .attr('width', WIDTH)
@@ -50,10 +23,6 @@ const loadChart = function () {
 
     let xAxis = d3.axisBottom(xScale);
     let yAxis = d3.axisLeft(yScale);
-
-    // let svg = initializeChart(xAxis, yAxis, '#line-chart');
-
-    // drawLineChart(svg,line,data)
 
     svg.append('g')
         .attr('transform', translate(MARGIN, HEIGHT - MARGIN))
