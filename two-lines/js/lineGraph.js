@@ -50,11 +50,13 @@ const loadChart = function () {
 
     let line = d3.line()
         .x(X_SCALE)
-        .y(Y_SCALE);
+        .y(Y_SCALE)
+        .curve(d3.curveStepAfter);
 
     let sine = d3.line()
         .x(X_SCALE)
-        .y(SIN_Y_SCALE);
+        .y(SIN_Y_SCALE)
+        .curve(d3.curveStepAfter);
 
     g.append('path')
         .attr('d', line(DATA))
