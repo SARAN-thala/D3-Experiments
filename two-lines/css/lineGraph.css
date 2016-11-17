@@ -4,17 +4,12 @@ path {
 }
 
 .line-path {
-    stroke: steelblue;
+    stroke: darkred;
 }
 
-#line-chart {
-    float: left;
+.line-sine-path {
+    stroke: darkblue;
 }
-
-.grid {
-    stroke: lightgrey;
-}
-
 circle{
     fill: white;
     stroke: steelblue;

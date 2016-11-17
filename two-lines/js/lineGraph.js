@@ -62,7 +62,7 @@ const loadChart = function () {
 
     g.append('path')
         .attr('d', sine(DATA))
-        .classed('line-path', true);
+        .classed('line-sine-path', true);
 
     generateCircles(X_SCALE, Y_SCALE, DATA, g);
     generateCircles(X_SCALE, SIN_Y_SCALE, DATA, g);
