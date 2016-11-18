@@ -4,8 +4,12 @@ path {
 }
 
 .area-sine-path {
+    fill: steelblue;
+    fill-opacity: 0.2;
+}
+
+.line-sine-path {
     stroke: steelblue;
-    fill: aliceblue;
 }
 
 circle {

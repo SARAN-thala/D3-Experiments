@@ -48,6 +48,14 @@ const loadChart = function () {
     let g = svg.append('g')
         .attr('transform', translate(MARGIN, MARGIN));
 
+    let lineArea = d3.area()
+        .x(SIN_X_SCALE)
+        .y(SIN_Y_SCALE);
+
+    g.append('path')
+        .attr('d', lineArea(SIN_DATA))
+        .classed('line-sine-path', true);
+
     let sineArea = d3.area()
         .x(SIN_X_SCALE)
         .y0(INNER_HEIGHT)
