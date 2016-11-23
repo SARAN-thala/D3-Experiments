@@ -1,2 +1,2 @@
 # lineChart
-for dynamic data
+https://saran-thala.github.io/lineChart/
