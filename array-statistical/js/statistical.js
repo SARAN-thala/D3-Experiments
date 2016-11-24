@@ -12,22 +12,26 @@ let showingInput = function (div, data) {
         .text(data.value);
 };
 
-
 let sortbyMethods = function (title, method) {
-    return showingInput('.container',{title: `${title} of number : `, value: method(mappedValues)});
+    return showingInput('.container', {title: `${title} of number : `, value: method(mappedValues)});
 };
 
 let sortByQuantile = function (title) {
-    return showingInput('.container',{title: `${title} of number : `, value: d3.quantile(mappedValues, quartileValue)});
+    return showingInput('.container', {
+        title: `${title} of number : `,
+        value: d3.quantile(mappedValues, quartileValue)
+    });
 };
-
 
 let dataStore = function () {
     let storingValues = (document.getElementById('inputNumber').value).split(',');
     mappedValues = storingValues.map(d => (d));
-    if (mappedValues != '') {
-        showingInput('.value',{title: 'Entered values are : ', value: mappedValues})
-        // console.log(mappedValues)
+    if (mappedValues == '') {
+        alert("Please fill the Input box");
+        d3.select('.value').html("");
+    } else {
+        d3.select('.value').html("");
+        showingInput('.value', {title: 'Entered values are : ', value: mappedValues})
     }
 };
 
@@ -44,8 +48,16 @@ function validate(evt) {
 
 let quartileStore = function () {
     quartileValue = (document.getElementById('quartileInput').value).split(',')[0];
-    if (quartileValue != '')
-        showingInput('.quantile',{title: 'Entered quartile value is : ', value: quartileValue})
+    if (quartileValue == '') {
+        alert("Please fill the quartile box");
+        d3.select('.quantile').html("");
+    }
+    if (!quartileValue) {
+        alert("Please fill the quartile box");
+    } else {
+        d3.select('.quantile').html("");
+        showingInput('.quantile', {title: 'Entered quartile value is : ', value: quartileValue})
+    }
 };
 
 let clearDataStore = function (fn) {

@@ -10,16 +10,18 @@
 </head>
 <body>
 <div class="userInput">
-    <input type="text" onkeypress="validate(event)" name="inputNumber" id="inputNumber" required placeholder="Enter your numbers">
+    <input type="text" onkeypress="validate(event)" name="inputNumber" id="inputNumber" required
+           placeholder="Enter your numbers">
     <button onclick="clearDataStore(dataStore)">Submit</button>
-    <input type="text" onkeypress="validate(event)" name="quartileInput" id="quartileInput" required placeholder="Enter your quartile value">
+    <input type="text" onkeypress="validate(event)" name="quartileInput" id="quartileInput" required
+           placeholder="Enter your quartile value">
     <button onclick="clearQuantileStore(quartileStore)">Submit</button>
 </div>
 <div class="value"></div>
 <div class="quantile"></div>
 <div class="container"></div>
 <div class="menu">
-    sort by:
+    Execute by:
     <button type="button" onclick="sortbyMethods('Min',d3.min)">Min</button>
     <button type="button" onclick="sortbyMethods('Max',d3.max)">Max</button>
     <button type="button" onclick="sortbyMethods('Extent',d3.extent)">Extent</button>
