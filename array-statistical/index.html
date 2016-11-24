@@ -9,15 +9,27 @@
     <title>Student Records</title>
 </head>
 <body>
-<div class="container"></div>
-<div class="button">
-    <p> Sort by:
-        <button type="button" name="name" onclick="sortByName()">Name</button>
-        <button type="button" name="subject" onclick="sortBySubject()">Subject</button>
-        <button type="button" name="score" onclick="sortByScore()">Score</button>
-    </p>
+<div class="userInput">
+    <input type="text" onkeypress="validate(event)" name="inputNumber" id="inputNumber" required placeholder="Enter your numbers">
+    <button onclick="clearDataStore(dataStore)">Submit</button>
+    <input type="text" onkeypress="validate(event)" name="quartileInput" id="quartileInput" required placeholder="Enter your quartile value">
+    <button onclick="clearQuantileStore(quartileStore)">Submit</button>
 </div>
-<div class="legend">Subjects: </div>
+<div class="value"></div>
+<div class="quantile"></div>
+<div class="container"></div>
+<div class="menu">
+    sort by:
+    <button type="button" onclick="sortbyMethods('Min',d3.min)">Min</button>
+    <button type="button" onclick="sortbyMethods('Max',d3.max)">Max</button>
+    <button type="button" onclick="sortbyMethods('Extent',d3.extent)">Extent</button>
+    <button type="button" onclick="sortbyMethods('Sum',d3.sum)">Sum</button>
+    <button type="button" onclick="sortbyMethods('Mean',d3.mean)">Mean</button>
+    <button type="button" onclick="sortbyMethods('Median',d3.median)">Median</button>
+    <button type="button" onclick="sortByQuantile('Quantile',d3.quantile)">Quantile</button>
+    <button type="button" onclick="sortbyMethods('Variance',d3.variance)">Variance</button>
+    <button type="button" onclick="sortbyMethods('Deviation',d3.deviation)">Deviation</button>
+</div>
 <script type="text/javascript" src="../lib/d3.v4.min.js"></script>
 <script type="text/javascript" src="js/statistical.js"></script>
 </body>

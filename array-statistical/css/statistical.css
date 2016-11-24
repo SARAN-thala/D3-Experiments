@@ -1,0 +1,11 @@
+div {
+    padding-top: 20px;
+    font-family: "Helvetica Neue",Arial,sans-serif;
+    font-size: 30px;
+}
+
+button {
+    background-color: lightsteelblue;
+    border-radius: 10px;
+    border-color: lightblue;
+}
