@@ -9,13 +9,14 @@
     <title>Student Records</title>
 </head>
 <body>
+<h1>D3 Array Statistical</h1>
 <div class="userInput">
     <input type="text" onkeypress="validate(event)" name="inputNumber" id="inputNumber" required
            placeholder="Enter your numbers">
-    <button onclick="clearDataStore(dataStore)">Submit</button>
+    <button onclick="dataStore()">Submit</button>
     <input type="text" onkeypress="validate(event)" name="quartileInput" id="quartileInput" required
-           placeholder="Enter your quartile value">
-    <button onclick="clearQuantileStore(quartileStore)">Submit</button>
+           placeholder="Quartile value" size="15">
+    <button onclick="quartileStore()">Submit</button>
 </div>
 <div class="value"></div>
 <div class="quantile"></div>
@@ -28,7 +29,7 @@
     <button type="button" onclick="sortbyMethods('Sum',d3.sum)">Sum</button>
     <button type="button" onclick="sortbyMethods('Mean',d3.mean)">Mean</button>
     <button type="button" onclick="sortbyMethods('Median',d3.median)">Median</button>
-    <button type="button" onclick="sortByQuantile('Quantile',d3.quantile)">Quantile</button>
+    <button type="button" onclick="getQuantileValue('Quantile',d3.quantile)">Quantile</button>
     <button type="button" onclick="sortbyMethods('Variance',d3.variance)">Variance</button>
     <button type="button" onclick="sortbyMethods('Deviation',d3.deviation)">Deviation</button>
 </div>

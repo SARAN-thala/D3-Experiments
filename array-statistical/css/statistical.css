@@ -1,11 +1,28 @@
+body {
+    margin-left: 22%;
+    font-family: "Hiragino Sans GB", Arial, sans-serif;
+}
+
+h1 {
+    margin-left: 22%;
+}
+
 div {
     padding-top: 20px;
-    font-family: "Helvetica Neue", Arial, sans-serif;
+    font-family: inherit;
     font-size: 24px;
+}
+
+input {
+    font-family: inherit;
+    font-size: 19px;
+    border: groove;
 }
 
 button {
     background-color: lightsteelblue;
-    border-radius: 10px;
+    border-radius: 5px;
     border-color: lightblue;
+    font-family: inherit;
+    font-size: 19px;
 }
