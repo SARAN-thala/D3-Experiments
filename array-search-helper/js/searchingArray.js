@@ -15,6 +15,10 @@ let sortByAscending = () => (mappedValues.sort(d3.ascending));
 
 let sortByDescending = () => (mappedValues.sort(d3.descending));
 
+let sortByScanAscending = () => (d3.scan(mappedValues,(a,b)=>(a-b)));
+
+let sortByScanDescending = () => (d3.scan(mappedValues,(a,b)=>(b-a)));
+
 let sortbyMethods = function (title, method) {
     if (!mappedValues || mappedValues == '') {
         alert("Please fill the Input box");
