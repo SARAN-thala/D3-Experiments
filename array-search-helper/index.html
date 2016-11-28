@@ -14,14 +14,19 @@
     <input type="text" onkeypress="validate(event)" name="inputNumber" id="inputNumber" required
            placeholder="Enter your numbers">
     <button onclick="dataStore()">Submit</button>
+    <input type="text" onkeypress="validate(event)" name="inputNumber" id="bisectValue" required
+           placeholder="Enter Bisect value">
+    <button onclick="bisectData()">Submit</button>
 </div>
 <div class="value"></div>
-<div class="quantile"></div>
+<div class="bisectValue"></div>
 <div class="container"></div>
 <div class="menu">
     Execute by:
     <button type="button" onclick="sortbyMethods('Ascending', sortByScanAscending)">Least Number Index</button>
     <button type="button" onclick="sortbyMethods('Ascending', sortByScanDescending)">Large Number Index</button>
+    <button type="button" onclick="sortByBisect('Bisect Left', getBisectLeft)">Bisect Left</button>
+    <button type="button" onclick="sortByBisect('Bisect Right', getBisectRight)">Bisect Right</button>
     <button type="button" onclick="sortbyMethods('Ascending', sortByAscending)">Ascending</button>
     <button type="button" onclick="sortbyMethods('Descending',sortByDescending)">Descending</button>
 </div>

@@ -1,4 +1,5 @@
 let mappedValues;
+let bisectValue;
 
 let showingInput = function (div, data) {
     d3.select(div).html("");
@@ -15,9 +16,23 @@ let sortByAscending = () => (mappedValues.sort(d3.ascending));
 
 let sortByDescending = () => (mappedValues.sort(d3.descending));
 
-let sortByScanAscending = () => (d3.scan(mappedValues,(a,b)=>(a-b)));
+let sortByScanAscending = () => (d3.scan(mappedValues, (a, b) => (a - b)));
 
-let sortByScanDescending = () => (d3.scan(mappedValues,(a,b)=>(b-a)));
+let sortByScanDescending = () => (d3.scan(mappedValues, (a, b) => (b - a)));
+
+let getBisectLeft = () => (d3.bisectLeft(sortByAscending(), bisectValue));
+
+let getBisectRight = () => (d3.bisectRight(sortByAscending(), bisectValue));
+
+let sortByBisect = function (title, method) {
+    "use strict";
+    if (!bisectValue) {
+        alert('please enter bisect value');
+        d3.select('.container').html("");
+    } else {
+        return showingInput('.container', {title: `${title} value is : `, value: method(bisectValue)});
+    }
+};
 
 let sortbyMethods = function (title, method) {
     if (!mappedValues || mappedValues == '') {
@@ -36,6 +51,18 @@ let dataStore = function () {
     } else {
         d3.select('.value').html("");
         showingInput('.value', {title: 'Entered values are : ', value: mappedValues})
+    }
+    document.getElementById('inputNumber').value = '';
+};
+
+let bisectData = function () {
+    bisectValue = (document.getElementById('bisectValue').value).split(',')[0];
+    if (bisectValue == '') {
+        alert("Please fill the Bisect box");
+        d3.select('.bisectValue').html("");
+    } else {
+        d3.select('.bisectValue').html("");
+        showingInput('.bisectValue', {title: 'Entered values are : ', value: bisectValue})
     }
     document.getElementById('inputNumber').value = '';
 };

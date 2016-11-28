@@ -1,6 +1,7 @@
 body {
     margin-left: 22%;
     font-family: "Hiragino Sans GB", Arial, sans-serif;
+    margin-right: 20%;
 }
 
 h1 {
@@ -25,4 +26,5 @@ button {
     border-color: lightblue;
     font-family: inherit;
     font-size: 19px;
+    margin-top: 10px;
 }
