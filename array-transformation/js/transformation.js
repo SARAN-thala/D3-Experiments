@@ -12,7 +12,13 @@ let showingInput = function (div, data) {
         .text(data.value);
 };
 
-let shuffle = () => (d3.shuffle(mappedValues));
+let shuffle = () => (`[${d3.shuffle(mappedValues)}]`);
+
+let pairs = () => {
+    let getPair = d3.pairs(mappedValues);
+    let getPairs =  getPair.map(d => `[ ${d} ]`)
+    showingInput('.container', {title: 'Pairs of number : ', value: `[${getPairs}]`});
+};
 
 // let sortByDescending = () => (mappedValues.sort(d3.descending));
 //
@@ -24,15 +30,15 @@ let shuffle = () => (d3.shuffle(mappedValues));
 //
 // let getBisectRight = () => (d3.bisectRight(sortByAscending(), bisectValue));
 
-let sortByBisect = function (title, method) {
-    "use strict";
-    if (!bisectValue) {
-        alert('please enter bisect value');
-        d3.select('.container').html("");
-    } else {
-        return showingInput('.container', {title: `${title} value is : `, value: method(bisectValue)});
-    }
-};
+// let sortByBisect = function (title, method) {
+//     "use strict";
+//     if (!bisectValue) {
+//         alert('please enter bisect value');
+//         d3.select('.container').html("");
+//     } else {
+//         return showingInput('.container', {title: `${title} value is : `, value: method(bisectValue)});
+//     }
+// };
 
 let sortbyMethods = function (title, method) {
     if (!mappedValues || mappedValues == '') {
@@ -50,7 +56,7 @@ let dataStore = function () {
         d3.select('.value').html("");
     } else {
         d3.select('.value').html("");
-        showingInput('.value', {title: 'Entered values are : ', value: mappedValues})
+        showingInput('.value', {title: 'Entered values are : ', value: `[${mappedValues}]`})
     }
     document.getElementById('inputNumber').value = '';
 };
