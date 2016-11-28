@@ -1,0 +1,36 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" type="text/css" href="css/transformation.css">
+    <title>Array Statistical</title>
+</head>
+<body>
+<h1>D3 Array Transformation</h1>
+<div class="userInput">
+    <input type="text" onkeypress="validate(event)" name="inputNumber" id="inputNumber" required
+           placeholder="Enter your numbers">
+    <button onclick="dataStore()">Submit</button>
+    <!--<input type="text" onkeypress="validate(event)" name="inputNumber" id="bisectValue" required-->
+           <!--placeholder="Enter Bisect value">-->
+    <!--<button onclick="bisectData()">Submit</button>-->
+</div>
+<div class="value"></div>
+<div class="bisectValue"></div>
+<div class="container"></div>
+<div class="menu">
+    Execute by:
+    <button type="button" onclick="sortbyMethods('Shuffle', shuffle)">Shuffle</button>
+    <!--<button type="button" onclick="sortbyMethods('Ascending', sortByScanDescending)">Large Number Index</button>-->
+    <!--<button type="button" onclick="sortByBisect('Bisect Left', getBisectLeft)">Bisect Left</button>-->
+    <!--<button type="button" onclick="sortByBisect('Bisect Right', getBisectRight)">Bisect Right</button>-->
+    <!--<button type="button" onclick="sortbyMethods('Ascending', sortByAscending)">Ascending</button>-->
+    <!--<button type="button" onclick="sortbyMethods('Descending',sortByDescending)">Descending</button>-->
+</div>
+<script type="text/javascript" src="../lib/d3.v4.min.js"></script>
+<script type="text/javascript" src="js/transformation.js"></script>
+</body>
+</html>
