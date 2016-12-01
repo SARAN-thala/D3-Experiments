@@ -1,4 +1,6 @@
 let mappedValues;
+let data = [];
+let storingData = [];
 let bisectValue;
 
 let showingInput = function (div, data) {
@@ -12,12 +14,17 @@ let showingInput = function (div, data) {
         .text(data.value);
 };
 
-let shuffle = () => (`[${d3.shuffle(mappedValues)}]`);
+let shuffle = () => (showingInput('.container', {title: 'Shuffle of number : ', value:`[${d3.shuffle(mappedValues)}]`}))
 
 let pairs = () => {
     let getPair = d3.pairs(mappedValues);
-    let getPairs =  getPair.map(d => `[ ${d} ]`)
+    let getPairs =  getPair.map(d => `[ ${d} ]`);
     showingInput('.container', {title: 'Pairs of number : ', value: `[${getPairs}]`});
+};
+
+let merge = () => {
+    let getPair = d3.merge(data);
+    showingInput('.container', {title: 'Merges value is : ', value: `[${getPair}]`});
 };
 
 // let sortByDescending = () => (mappedValues.sort(d3.descending));
@@ -56,7 +63,9 @@ let dataStore = function () {
         d3.select('.value').html("");
     } else {
         d3.select('.value').html("");
-        showingInput('.value', {title: 'Entered values are : ', value: `[${mappedValues}]`})
+        storingData.push(`[${mappedValues}]`);
+        data.push(mappedValues);
+        showingInput('.value', {title: 'Entered values are : ', value: storingData})
     }
     document.getElementById('inputNumber').value = '';
 };
